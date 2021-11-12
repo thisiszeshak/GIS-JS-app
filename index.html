@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <link rel="stylesheet" href="main.css">
+</head>
+
 <body>
 
   <p>Click the button to get your coordinates.</p>
 
-  <button onclick="getLocation()">Try It</button>
+  <button id="boton" onclick="getLocation()">Try It</button>
 
-  <p id="demo"></p>
+  <br>
+  <div id="myDiv">
+    <p id="demo"></p>
+  </div>
 
   <script>
     var x = document.getElementById("demo");
@@ -23,6 +30,8 @@
     function showPosition(position) {
       x.innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
+      var div = document.getElementById("myDiv");
+      div.className ="coordenadas";
     }
 
     function showError(error) {
