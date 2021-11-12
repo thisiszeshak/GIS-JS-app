@@ -9,9 +9,8 @@
 
   <p>Click the button to get your coordinates.</p>
 
-  <button id="boton" onclick="getLocation()">Try It</button>
+  <button id="boton" onclick="getLocation()">Try It</button><br><br>
 
-  <br>
   <div id="myDiv">
     <p id="demo"></p>
   </div>
@@ -31,7 +30,7 @@
       x.innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
       var div = document.getElementById("myDiv");
-      div.className ="coordenadas";
+      div.className = "coordenadas";
     }
 
     function showError(error) {
