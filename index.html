@@ -7,50 +7,24 @@
 
 <body>
 
-  <p>Click the button to get your coordinates.</p>
-
-  <button id="boton" onclick="getLocation()">Try It</button><br><br>
-
+  <p>Haz click para conocer tu ubicación actual o iniciar un trayecto</p>
+  <div class="align_buttons">
+    <button id="boton_ubicacion" class="boton" onclick="guardarPuntoIndividual()">Ver ubicación</button>
+    <button id="boton_iniciar" class="boton">Iniciar trayecto</button>
+  </div>
+  <br><br>
+  <p>Haz click para ver las ubicaciones guardadas o tu último trayecto</p>
+  <div class="align_buttons">
+    <button id="boton_ver_puntos" class="boton">Ver puntos</button>
+    <button id="boton_ver_trayecto" class="boton">Ver tayecto</button>
+  </div>
   <div id="myDiv">
     <p id="demo"></p>
   </div>
 
-  <script>
-    var x = document.getElementById("demo");
-
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-      var div = document.getElementById("myDiv");
-      div.className = "coordenadas";
-    }
-
-    function showError(error) {
-      switch (error.code) {
-        case error.PERMISSION_DENIED:
-          x.innerHTML = "User denied the request for Geolocation."
-          break;
-        case error.POSITION_UNAVAILABLE:
-          x.innerHTML = "Location information is unavailable."
-          break;
-        case error.TIMEOUT:
-          x.innerHTML = "The request to get user location timed out."
-          break;
-        case error.UNKNOWN_ERROR:
-          x.innerHTML = "An unknown error occurred."
-          break;
-      }
-    }
-  </script>
-
+  <script src="com/gisApp.js"></script>
+  <script src="com/clsPunto.js"></script>
+  <script src="com/clsListaPuntos.js"></script>
 </body>
 
 </html>
