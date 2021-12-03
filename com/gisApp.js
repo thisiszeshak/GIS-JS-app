@@ -1,6 +1,6 @@
 var x = document.getElementById("demo");
-var listaPuntosIndividuales = new clsListaPuntos();
-var listaPuntosTrayecto = new clsListaPuntos()
+//var listaPuntosIndividuales = new clsListaPuntos();
+//var listaPuntosTrayecto = new clsListaPuntos();
 
 
 ////////////////////////////////////////////////////////////////////

@@ -4,5 +4,4 @@ class clsPunto{
         this.px = x;
         this.py = y;
     }
-
 }

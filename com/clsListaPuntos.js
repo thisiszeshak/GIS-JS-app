@@ -3,7 +3,8 @@ class clsListaPuntos{
         this.listaPuntos = [];
     }
     guardarPunto(lista){
-        var punto = new clsPunto()
+        var punto = new clsPunto(10, 7);
         this.listaPuntos.push(punto);
+
     }
 }
