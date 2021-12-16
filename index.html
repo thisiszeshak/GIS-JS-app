@@ -3,28 +3,41 @@
 
 <head>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/png" href="favicon/icon.png" sizes="16x16"> 
 </head>
 
 <body>
-
-  <p>Haz click para conocer tu ubicación actual o iniciar un trayecto</p>
-  <div class="align_buttons">
-    <button id="boton_ubicacion" class="boton" onclick="guardarPuntoIndividual()">Ver ubicación</button>
-    <button id="boton_iniciar" class="boton">Iniciar trayecto</button>
-  </div>
-  <br><br>
-  <p>Haz click para ver las ubicaciones guardadas o tu último trayecto</p>
-  <div class="align_buttons">
-    <button id="boton_ver_puntos" class="boton">Ver puntos</button>
-    <button id="boton_ver_trayecto" class="boton">Ver tayecto</button>
-  </div>
-  <div id="myDiv">
-    <p id="demo"></p>
+  <div id="header">
+    <h1 class="vertical_middle lateral_padding"><img class="vertical_middle lateral_padding" src="favicon/icon2.png">GISApp</h1>
   </div>
 
-  <script src="com/gisApp.js"></script>
+  <div id="content">
+    <p>Haz click para conocer tu ubicación actual o iniciar un trayecto</p>
+    <div class="align_buttons">
+      <button id="boton_ubicacion" class="boton" onclick="guardarPuntoIndividual()">Ver ubicación</button>
+      <button id="boton_iniciar" class="boton">Iniciar trayecto</button>
+    </div>
+    <br><br>
+    <p>Haz click para ver las ubicaciones guardadas o tu último trayecto</p>
+    <div class="align_buttons">
+      <button id="boton_ver_puntos" class="boton">Ver puntos</button>
+      <button id="boton_ver_trayecto" class="boton">Ver trayecto</button>
+    </div>
+    <br><br>
+    <div id="myDiv">
+      <p id="demo"></p>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <p>Adrià Rivero 10/12/2021 <img class="vertical_middle" src="favicon/icon.png"></p>
+  </div>
   <script src="com/clsPunto.js"></script>
   <script src="com/clsListaPuntos.js"></script>
+  <script src="com/clsAjax.js"></script>
+  <script src="js/gisApp.js"></script>
+
 </body>
 
 </html>
