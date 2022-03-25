@@ -18,7 +18,7 @@ function guardarPuntoIndividual() {
 // Trayecto //
 ////////////////////////////////////////////////////////////////////
 function iniciarTrayecto() {
-  console.log(navigator.geolocation.getCurrentPosition(showPosition,showError));
+  navigator.geolocation.getCurrentPosition(showPosition,showError);
 }
 
 ////////////////////////////////////////////////////////////////////
