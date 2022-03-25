@@ -1,6 +1,6 @@
 var x = document.getElementById("demo");
-var listaPuntosIndividuales = new clsListaPuntos(1);
-var listaPuntosTrayecto = new clsListaPuntos(2);
+//var listaPuntosIndividuales = new clsListaPuntos(1);
+//var listaPuntosTrayecto = new clsListaPuntos(2);
 
 
 ////////////////////////////////////////////////////////////////////
@@ -17,8 +17,8 @@ function guardarPuntoIndividual() {
 ////////////////////////////////////////////////////////////////////
 // Trayecto //
 ////////////////////////////////////////////////////////////////////
-function iniciarTrayecto(){
-
+function iniciarTrayecto() {
+  console.log(navigator.geolocation.getCurrentPosition(showPosition,showError));
 }
 
 ////////////////////////////////////////////////////////////////////

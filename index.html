@@ -15,7 +15,8 @@
     <p>Haz click para conocer tu ubicación actual o iniciar un trayecto</p>
     <div class="align_buttons">
       <button id="boton_ubicacion" class="boton" onclick="guardarPuntoIndividual()">Ver ubicación</button>
-      <button id="boton_iniciar" class="boton">Iniciar trayecto</button>
+      <button id="boton_iniciar" class="boton" onclick="const intervalo = setInterval(iniciarTrayecto, 5000);">Iniciar trayecto</button>
+      <button id="boton_iniciar" class="boton" onclick="function pararIntervalo() {clearInterval(intervalo);}">Iniciar trayecto</button>
     </div>
     <br><br>
     <p>Haz click para ver las ubicaciones guardadas o tu último trayecto</p>
@@ -35,6 +36,8 @@
   </div>
   <script src="com/clsPunto.js"></script>
   <script src="com/clsListaPuntos.js"></script>
+
+
   <script src="com/clsAjax.js"></script>
   <script src="js/gisApp.js"></script>
 
