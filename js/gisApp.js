@@ -1,3 +1,5 @@
+fechaActual();
+
 var x = document.getElementById("demo");
 //var listaPuntosIndividuales = new clsListaPuntos(1);
 //var listaPuntosTrayecto = new clsListaPuntos(2);
@@ -18,7 +20,11 @@ function guardarPuntoIndividual() {
 // Trayecto //
 ////////////////////////////////////////////////////////////////////
 function iniciarTrayecto() {
-  navigator.geolocation.getCurrentPosition(showPosition,showError);
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -50,4 +56,10 @@ function showError(error) {
       break;
   }
 
+}
+
+function fechaActual() {
+  var fechaCompleta = new Date();
+  var fecha = fechaCompleta.getFullYear() + '-' + (fechaCompleta.getMonth() + 1) + '-' + fechaCompleta.getDate();
+  document.getElementById("fecha").innerHTML= "Adrià Rivero, " + fecha + "<img class='vertical_middle' src='favicon/icon.png'>";
 }
