@@ -1,14 +1,33 @@
 class clsAPP {
     constructor() {
         console.log("app iniciada");
+        this.trayectoIniciado;
+        this.tick = 0;
+        this.listaPuntosIndividuales = new clsListaPuntos("1");
+        this.listaPuntosTrayecto = new clsListaPuntos("2");
     }
 
-    Start() {
 
+    ////////////////////////////////////////////////////////////////////
+    // Trayecto //
+    ////////////////////////////////////////////////////////////////////
+    guardarTrayecto() {
+        if (this.tick % 1000 == 0) {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.showPositionTrayecto, this.showError);
+            } else {
+                pos.innerHTML = "Tu buscador no soporta la geolocalización.";
+            }
+        }
+        if (this.tick > 10000000000) {
+            this.tick = 0;
+        }
+        this.tick++;
+        this.trayectoIniciado = window.requestAnimationFrame(this.guardarTrayecto.bind(this));
     }
 
-    Stop() {
-
+    detenerTrayecto() {
+        window.cancelAnimationFrame(this.guardarTrayecto.bind(this.trayectoIniciado))
     }
 
     fechaActual() {
@@ -21,50 +40,41 @@ class clsAPP {
     // Almacenar puntos //
     ////////////////////////////////////////////////////////////////////
     guardarPuntoIndividual() {
+        console.log("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/")
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
-            alert("Ubicación guardada");
-            /*
-            Swal.fire({
-              icon: 'success',
-              title: '¡Ubicación guardada!',
-              text: 'hola'
-            })
-            */
-
+            navigator.geolocation.getCurrentPosition(this.showPositionIndividual, this.showError);
+            console.log("Ubicación guardada correctamente");
         } else {
-            alert("No se ha podido guardar la ubicación")
-            /*
-            Swal.fire({
-              icon: 'error',
-              title: 'No se ha podido accceder a la ubicación'
-            })
-            */
+            console.log("No se ha podido guardar la ubicación")
         }
     }
 
-    ////////////////////////////////////////////////////////////////////
-    // Trayecto //
-    ////////////////////////////////////////////////////////////////////
-    guardarTrayecto() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
-        } else {
-            pos.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
 
     ////////////////////////////////////////////////////////////////////
     // Ubicación actual //
     ////////////////////////////////////////////////////////////////////
-    showPosition(position) {
-        var pos = document.getElementById("coords")
-        pos.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
-        var div = document.getElementById("myDiv");
-        div.className = "coordenadas";
-        console.log("Latitude: " + position.coords.latitude +
-            " Longitude: " + position.coords.longitude);
+    showPositionIndividual(position) {
+        var punto = new clsPunto(Math.floor(Math.random() * 100000) + 1, position.coords.latitude, position.coords.longitude);
+        this.listaPuntosIndividuales.addPoint(punto);
+    }
+
+    showPositionTrayecto(position) {
+        var punto = new clsPunto(Math.floor(Math.random() * 100000) + 1, position.coords.latitude, position.coords.longitude);
+        this.listaPuntosTrayecto.añadirUbicacion(punto);
+    }
+
+
+    mostrarPuntos(lista) {
+        var pos = document.getElementById("listaPuntos");
+        var i = 0
+        while (i < lista.length - 1) {
+            var div = document.createElement("div");
+            var p = document.createElement("p");
+            p.innerText = "Latitudd: " + lista[i].px + " Longitud: " + lista[i].py;
+            div.appendChild(p);
+            pos.appendChild(div);
+            i++;
+        }
     }
 
     ////////////////////////////////////////////////////////////////////

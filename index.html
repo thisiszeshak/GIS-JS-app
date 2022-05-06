@@ -21,43 +21,38 @@
       <div class="row push-20">
         <button id="boton_ubicacion" class="btn btn-primary rounded-20 margin-20
           col-3"
-          onclick="app.guardarPuntoIndividual()">Ver
+          onclick="mGISAPP.guardarPuntoIndividual()">Ver
           ubicación</button>
         <button id="boton_iniciar" class="btn btn-success rounded-20 margin-20
           col-3"
-          onclick="app.guardarTrayecto();">Iniciar trayecto</button>
+          onclick="mGISAPP.guardarTrayecto();">Iniciar trayecto</button>
         <button id="boton_iniciar" class="btn btn-warning rounded-20 margin-20
           col-3"
-          onclick="function
-          pararIntervalo() {alert('Trayecto finalizado');
-          clearInterval(intervalo);}">Finalizar trayecto</button>
+          onclick="mGISAPP.detenerTrayecto()">Finalizar trayecto</button>
       </div>
       <h3><i class="fa-solid fa-bookmark"></i>REGISTRO DE UBICACIONES</h3>
       <div class="row push-20">
         <button id="boton_ver_puntos" class="btn btn-primary rounded-20
-          margin-20 col-3">Ver puntos</button>
+          margin-20 col-3"
+          onclick="mGISAPP.mostrarPuntos(this.listaPuntosIndividuales)">Ver
+          ubicaciones</button>
         <button id="boton_ver_trayecto" class="btn btn-primary rounded-20
           margin-20 col-3">Ver trayecto</button>
       </div>
 
-      <div id="myDiv">
-        <p id="coords"></p>
+      <div id="listaPuntos">
+
       </div>
     </div>
 
-    <div id="footer">
-      <div id="fecha"></div>
-    </div>
-    <script src="com/clsAPP.js"></script>
-    <script src="com/clsListaPuntos.js"></script>
     <script src="com/clsPunto.js"></script>
-    
-    
+    <script src="com/clsListaPuntos.js"></script>
+    <script src="com/clsAPP.js"></script>
+
 
     <script src="js/sweetalert2.min.js"></script>
     <script src="com/clsAjax.js"></script>
     <script src="js/gisApp.js"></script>
-
   </body>
 
 </html>

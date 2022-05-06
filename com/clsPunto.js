@@ -1,8 +1,8 @@
-class clsPunto{
-    constructor(id, x, y){
+class clsPunto {
+    constructor(id, x, y) {
         this.pid = id;
         this.px = x;
         this.py = y;
-        console.log("Punto creado" + this.id);
+        console.log("Punto creado: " + this.id);
     }
 }
