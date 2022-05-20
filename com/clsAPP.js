@@ -14,7 +14,7 @@ class clsAPP {
     guardarTrayecto() {
         if (this.tick % 1000 == 0) {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(this.showPositionTrayecto, this.showError);
+                navigator.geolocation.getCurrentPosition(this.showPositionTrayecto.bind(this), this.showError.bind(this));
             } else {
                 pos.innerHTML = "Tu buscador no soporta la geolocalización.";
             }
@@ -42,7 +42,7 @@ class clsAPP {
     guardarPuntoIndividual() {
         console.log("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/")
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPositionIndividual, this.showError);
+            navigator.geolocation.getCurrentPosition(this.showPositionIndividual.bind(this), this.showError.bind(this));
             console.log("Ubicación guardada correctamente");
         } else {
             console.log("No se ha podido guardar la ubicación")
@@ -55,7 +55,13 @@ class clsAPP {
     ////////////////////////////////////////////////////////////////////
     showPositionIndividual(position) {
         var punto = new clsPunto(Math.floor(Math.random() * 100000) + 1, position.coords.latitude, position.coords.longitude);
-        this.listaPuntosIndividuales.addPoint(punto);
+        this.listaPuntosIndividuales.añadirUbicacion(punto);
+        Swal.fire({
+            icon: 'success',
+            timer: 1000,
+            title: 'Ubicación guardada',
+            showConfirmButton: false
+        })
     }
 
     showPositionTrayecto(position) {
@@ -64,13 +70,15 @@ class clsAPP {
     }
 
 
-    mostrarPuntos(lista) {
+    mostrarPuntosIndividuales() {
         var pos = document.getElementById("listaPuntos");
+        pos.innerHTML = ""
         var i = 0
-        while (i < lista.length - 1) {
+        while (i < this.listaPuntosIndividuales.listaPuntos.length) {
             var div = document.createElement("div");
+            div.classList = "col col-md-4"
             var p = document.createElement("p");
-            p.innerText = "Latitudd: " + lista[i].px + " Longitud: " + lista[i].py;
+            p.innerText = "Latitud: " + this.listaPuntosIndividuales.listaPuntos[i].px + " Longitud: " + this.listaPuntosIndividuales.listaPuntos[i].py;
             div.appendChild(p);
             pos.appendChild(div);
             i++;
@@ -83,7 +91,6 @@ class clsAPP {
     showError(error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
-                pos.innerHTML = "Se requieren permisos para acceder a la ubicación"
                 break;
             case error.POSITION_UNAVAILABLE:
                 pos.innerHTML = "Información de ubicación no disponible"

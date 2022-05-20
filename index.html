@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="icon" type="image/png" href="favicon/icon.png" sizes="16x16">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/a18738dfdd.js"
       crossorigin="anonymous"></script>
   </head>
@@ -19,30 +20,50 @@
     <div id="content" class="container">
       <h3><i class="fa-solid fa-location-dot"></i>GUARDADO DE UBICACIONES</h3>
       <div class="row push-20">
-        <button id="boton_ubicacion" class="btn btn-primary rounded-20 margin-20
-          col-3"
-          onclick="mGISAPP.guardarPuntoIndividual()">Ver
-          ubicación</button>
-        <button id="boton_iniciar" class="btn btn-success rounded-20 margin-20
-          col-3"
-          onclick="mGISAPP.guardarTrayecto();">Iniciar trayecto</button>
-        <button id="boton_iniciar" class="btn btn-warning rounded-20 margin-20
-          col-3"
-          onclick="mGISAPP.detenerTrayecto()">Finalizar trayecto</button>
+        <div class="col-6 col-md-4">
+          <div class="m-2 p-2 row">
+            <button id="boton_ubicacion" class="btn btn-primary
+              rounded-20 col-12"
+              onclick="mGISAPP.guardarPuntoIndividual()">Ver
+              ubicación</button>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="m-2 p-2 row">
+            <button id="boton_iniciar" class="btn btn-success
+              rounded-20 col-12"
+              onclick="mGISAPP.guardarTrayecto();">Iniciar trayecto</button>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="m-2 p-2 row">
+          <button id="boton_iniciar" class="btn btn-warning
+            rounded-20 col-12"
+            onclick="mGISAPP.detenerTrayecto()">Finalizar trayecto</button>
+          </div>
+        </div>
       </div>
+
       <h3><i class="fa-solid fa-bookmark"></i>REGISTRO DE UBICACIONES</h3>
       <div class="row push-20">
-        <button id="boton_ver_puntos" class="btn btn-primary rounded-20
-          margin-20 col-3"
-          onclick="mGISAPP.mostrarPuntos(this.listaPuntosIndividuales)">Ver
-          ubicaciones</button>
-        <button id="boton_ver_trayecto" class="btn btn-primary rounded-20
-          margin-20 col-3">Ver trayecto</button>
+        <div class="col-6 col-md-4">
+          <div class="m-2 p-2 row">
+          <button id="boton_ver_puntos" class="btn btn-primary
+            rounded-20 xol-12"
+            onclick="mGISAPP.mostrarPuntosIndividuales()">Ver
+            ubicaciones</button>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="m-2 p-2 row">
+          <button id="boton_ver_trayecto" class="btn
+            btn-primary rounded-20 col-12" onclick="mGISAPP.mostrarPuntos()">Ver
+            trayecto</button>
+          </div>
+        </div>
       </div>
 
-      <div id="listaPuntos">
-
-      </div>
+      <div class="row" id="listaPuntos"></div>
     </div>
 
     <script src="com/clsPunto.js"></script>
@@ -50,7 +71,7 @@
     <script src="com/clsAPP.js"></script>
 
 
-    <script src="js/sweetalert2.min.js"></script>
+
     <script src="com/clsAjax.js"></script>
     <script src="js/gisApp.js"></script>
   </body>

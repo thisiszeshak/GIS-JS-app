@@ -7,7 +7,7 @@ class clsListaPuntos {
         return this;
     }
 
-    addPoint(punto) {
+    añadirUbicacion(punto) {
         this.listaPuntos.push(punto);
         console.log(this.listaPuntos);
     }
