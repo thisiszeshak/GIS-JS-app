@@ -56,6 +56,17 @@ class clsAPP {
     showPositionIndividual(position) {
         var punto = new clsPunto(Math.floor(Math.random() * 100000) + 1, position.coords.latitude, position.coords.longitude);
         this.listaPuntosIndividuales.añadirUbicacion(punto);
+
+        $.ajax({
+            type: 'POST',
+            url: "txt/ubicaciones.csv",
+            success: function (data) {
+                data += "\n";
+                alert(data);
+            }
+        })
+
+
         Swal.fire({
             icon: 'success',
             timer: 1000,
